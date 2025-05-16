@@ -1,6 +1,8 @@
 # Assignment 1 - EC7413
 ## Group: Anas Haouat, Jonathan Holl & Andrea Jeppsson
 
+### Problem 1:
+
 # Start by loading the relevant libraries
 library(dynlm)
 library(portes) # to perform Ljung-Box test
@@ -65,3 +67,29 @@ for(mod in list(AR1, AR2, AR3, AR4, AR5)) print(jarque.bera.test(mod$residuals))
           # data. AR4 is not autocorrelated (according to LB) and presents the
           # best fit.
 
+########################
+
+### Problem 2:
+
+library(pxweb)
+
+# Q1 - 
+
+# Use the pxweb package to download the KPIF data from SCB
+pxweb_query_list <- 
+  list("ContentsCode"=c("000005HS"),
+       "Tid"=c("*"))
+
+px_data <- 
+  pxweb_get(url = "https://api.scb.se/OV0104/v1/doris/sv/ssd/PR/PR0101/PR0101G/KPIF",
+            query = pxweb_query_list)
+
+# Convert the data to a time series object
+KPIF <- as.data.frame(px_data)
+KPIF_ts <- ts(KPIF, start = c(2002,1), frequency = 12)
+
+vals <- as.numeric(KPIF$"KPIF, månadsförändring, 1987=100")
+KPIF_ts <- ts(vals,
+              start     = c(2002, 1),
+              frequency = 12,
+              end = c(2022,12))
