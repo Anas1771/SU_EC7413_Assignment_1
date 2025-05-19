@@ -1,6 +1,11 @@
 # Assignment 1 - EC7413
 ## Group: Anas Haouat, Jonathan Holl & Andrea Jeppsson
 
+
+#--**--##--**--##--**--##--**--##--**--##--**--#
+#--**--##--**--##--**--##--**--##--**--##--**--#
+
+
 ### Problem 1:
 
 # Start by loading the relevant libraries
@@ -30,6 +35,9 @@ models <- list(AR1, AR2, AR3, AR4, AR5)
 for (mod in models) {
   print(summary(mod))
 }
+
+
+#--**--##--**--##--**--##--**--##--**--##--**--#
 
 
 ## Q2 - Compute AIC for the 5 models:
@@ -67,7 +75,10 @@ for(mod in list(AR1, AR2, AR3, AR4, AR5)) print(jarque.bera.test(mod$residuals))
           # data. AR4 is not autocorrelated (according to LB) and presents the
           # best fit.
 
-########################
+
+#--**--##--**--##--**--##--**--##--**--##--**--#
+#--**--##--**--##--**--##--**--##--**--##--**--#
+
 
 ### Problem 2:
 
@@ -77,7 +88,9 @@ library(dynlm) # dynlm()
 library(sandwich) # NeweyWest()
 library(lmtest) # coeftest()
 
-#############################################################
+
+#--**--##--**--##--**--##--**--##--**--##--**--#
+
 
 # Q1 - download KPIF data from SCB using their API
 
@@ -116,10 +129,10 @@ rm(full_ts)
 # horizons h = 1,12,24 so we have 36 forecast origins.
 origin_1 <- c(2002,12) # first forecast origin - 2002:M12
 horizons <- c(1,12,24) # the 3 forecast horizons we are using
-hmax <- max(horizons)
+hmax <- max(horizons) # 24 steps ahead
 n_origins <- length(window(KPIF_ts, start = origin_1))
 freq <- 12 # monthly
-hmax <- max(horizons) # 24 steps ahead
+
 
 # Create empty lists for both models:
 ARIMA_models <- vector("list", n_origins)
@@ -200,14 +213,12 @@ for (i in 1:n_origins) {
 ARIMA_errors <- outcome - ARIMA_results
 AR1_errors   <- outcome - AR1_results
 
-# 4) label the columns
+# label the columns
 colnames(ARIMA_errors) <- paste0("h = ", horizons)
 colnames(AR1_errors)   <- paste0("h = ", horizons)
 
 # done
 rm(outcome)
-
-###
 
 ## Compute bias
 
