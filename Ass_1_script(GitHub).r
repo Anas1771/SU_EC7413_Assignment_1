@@ -247,8 +247,6 @@ rm(h)
 bias_pvals
 
 # There’s no evidence that the 6 forecasts systematically are biased.
-## DOUBLE CHECK!
-
 
 #--**--##--**--##--**--##--**--##--**--##--**--#
 
@@ -278,6 +276,6 @@ rm(i,j)
 
 DM_pvals
 
-# The null cannot only be rejected for horizon 1 at a 90% confidence level.
+# The null can only be rejected for horizon 1 at a 95% confidence level." should be the comment
 
 #DONE!
