@@ -276,6 +276,6 @@ rm(i,j)
 
 DM_pvals
 
-# The null can only be rejected for horizon 1 at a 95% confidence level." should be the comment
+# The null can only be rejected for horizon 1 at a 95% confidence level.
 
 #DONE!
